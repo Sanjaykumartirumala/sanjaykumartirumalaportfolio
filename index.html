@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sanjay Kumar Tirumala — Software Developer</title>
+
+  <!-- Boxicons -->
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+  <!-- Typed.js (for rotating roles) -->
+  <script defer src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+  <!-- Basic dark theme CSS (embedded for convenience) -->
+  <style>
+    :root{
+      --bg: #0f1115;
+      --card: #0f1720;
+      --muted: #98a0b3;
+      --accent: #6ee7b7;
+      --accent-2: #60a5fa;
+      --glass: rgba(255,255,255,0.03);
+      --max-w: 1100px;
+      --radius: 12px;
+      --fw-medium: 600;
+      --fw-regular: 400;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg,var(--bg), #071018 120%);
+      color:#e6eef6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      padding:24px;
+      display:flex;
+      justify-content:center;
+    }
+
+    .container{
+      width:100%;
+      max-width:var(--max-w);
+    }
+
+    /* Header */
+    header.header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:18px 20px;
+      border-radius:12px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      backdrop-filter: blur(6px);
+      margin-bottom:20px;
+    }
+    .logo{font-weight:700;color:var(--accent);text-decoration:none}
+    nav.navbar{display:flex;gap:14px;align-items:center}
+    nav.navbar a{
+      color:var(--muted);
+      text-decoration:none;
+      font-weight:500;
+      padding:8px 12px;
+      border-radius:8px;
+    }
+    nav.navbar a:hover{color:#fff;background:var(--glass)}
+    .menu-toggle{display:none;font-size:22px;color:var(--muted);cursor:pointer}
+
+    /* Main grid */
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 380px;
+      gap:24px;
+      align-items:start;
+    }
+
+    /* Left column (main content) */
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:var(--radius);
+      padding:22px;
+      box-shadow: 0 6px 30px rgba(2,6,23,0.6);
+    }
+
+    .hero{
+      display:flex;
+      gap:18px;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+    }
+    .hero .meta{
+      max-width: 68%;
+    }
+    .title{
+      margin:0 0 8px 0;
+      font-size:clamp(20px, 3.6vw, 30px);
+      letter-spacing:-0.4px;
+    }
+    .subtitle{
+      margin:0 0 10px 0;
+      color:var(--muted);
+      font-weight:500;
+    }
+    .roles{color:var(--accent); font-weight:700}
+    .summary{color:var(--muted); margin-top:8px}
+
+    .actions{display:flex;gap:10px;align-items:center}
+    .btn{
+      background:linear-gradient(90deg,var(--accent),var(--accent-2));
+      color:#042024;
+      padding:10px 14px;
+      border-radius:10px;
+      text-decoration:none;
+      font-weight:700;
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+    }
+    .btn.secondary{
+      background:transparent;
+      color:var(--muted);
+      border:1px solid rgba(255,255,255,0.04);
+      font-weight:600;
+    }
+
+    /* Right column (sidebar) */
+    .sidebar .profile{
+      display:flex;
+      gap:14px;
+      align-items:center;
+    }
+    .avatar{
+      width:84px;height:84px;border-radius:12px;background:linear-gradient(180deg,#0b1216,#081018);
+      display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent);
+      font-size:18px;flex-shrink:0;
+      overflow:hidden;
+    }
+    .contact-list{margin-top:14px;display:flex;flex-direction:column;gap:8px}
+    .contact-item{display:flex;gap:10px;align-items:center;color:var(--muted);font-weight:600}
+    .chip{padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.02);color:var(--muted);font-weight:600}
+
+    /* Sections */
+    section h3{
+      margin:0 0 12px 0;
+      font-size:18px;color:#f3f8ff;
+      display:flex;align-items:center;gap:10px;
+    }
+    .section-row{display:flex;gap:14px;flex-wrap:wrap}
+    .timeline-item{padding:12px;border-radius:10px;background:rgba(255,255,255,0.015);border:1px solid rgba(255,255,255,0.02)}
+    .muted{color:var(--muted);font-size:14px}
+
+    /* Skills */
+    .skills{display:flex;gap:8px;flex-wrap:wrap}
+    .skill{padding:6px 10px;border-radius:8px;background:rgba(255,255,255,0.02);color:var(--muted);font-weight:600}
+
+    /* Projects box */
+    .project{margin-bottom:12px;padding:12px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.015));border:1px solid rgba(255,255,255,0.02)}
+
+    /* Achievements */
+    .stats{display:flex;gap:12px;flex-wrap:wrap}
+    .stat{padding:12px;border-radius:10px;background:rgba(255,255,255,0.02);min-width:150px;text-align:center}
+    .stat h4{margin:0;color:var(--accent);font-size:20px}
+
+    /* Footer */
+    .footer{margin-top:18px;padding:14px;border-radius:10px;text-align:center;color:var(--muted);font-size:14px}
+
+    /* Responsive */
+    @media (max-width:980px){
+      .grid{grid-template-columns:1fr;}
+      .hero .meta{max-width:100%}
+      nav.navbar{display:none}
+      .menu-toggle{display:block}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- HEADER -->
+    <header class="header" role="banner">
+      <a class="logo" href="#">Sanjay Kumar Tirumala</a>
+
+      <nav class="navbar" role="navigation" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <button class="menu-toggle" aria-label="Open menu" id="menuToggle">
+        <i class='bx bx-menu'></i>
+      </button>
+    </header>
+
+    <!-- MAIN GRID -->
+    <main class="grid" id="main">
+      <!-- LEFT: content -->
+      <div class="card content" aria-live="polite">
+        <!-- HERO -->
+        <div class="hero" id="home">
+          <div class="meta">
+            <h1 class="title">Sanjay Kumar Tirumala</h1>
+            <p class="subtitle">Software Developer · Backend Systems · Prompt Engineering · Agile</p>
+
+            <p class="summary">
+              <span class="muted">
+                Software Developer experienced in Java Spring Boot, RESTful APIs, and prompt engineering.
+                I build backend systems that are reliable, performant, and easy to maintain. I improved application
+                speed by 50% through Java optimizations and designed prompts with a 90% effectiveness rate for language models.
+              </span>
+            </p>
+
+            <p style="margin-top:12px">
+              <strong class="roles" id="typedRoles">Software Developer</strong>
+            </p>
+
+            <div style="margin-top:14px" class="actions" aria-hidden="false">
+              <a class="btn" href="SanjayKumarTirumalaResume.pdf" download>
+                <i class='bx bxs-download'></i> Download Resume
+              </a>
+              <a class="btn secondary" href="https://www.linkedin.com/in/sanjaykumartirumala" target="_blank" rel="noopener">
+                <i class='bx bxl-linkedin-square'></i> LinkedIn
+              </a>
+            </div>
+          </div>
+
+          <!-- hero image / avatar area (decorative) -->
+          <aside class="hero-aside" style="text-align:center">
+            <div class="avatar" aria-hidden="true">
+              <img src="sk.jpg" alt="Sanjay Kumar" style="width:100%;height:100%;object-fit:cover">
+            </div>
+            <div class="muted" style="margin-top:8px">Yernagudem · India</div>
+          </aside>
+        </div>
+
+        <!-- EXPERIENCE -->
+        <section id="experience" style="margin-top:20px">
+          <h3><i class='bx bx-briefcase'></i> Experience</h3>
+
+          <div class="section-row">
+            <div class="timeline-item" style="flex:1">
+              <strong>Prompt Engineer — Outlier (Freelance)</strong>
+              <div class="muted">Dec 2024 — Apr 2025</div>
+              <ul style="margin-top:8px;color:var(--muted)">
+                <li>Designed high-quality prompts that produced desired responses from language models.</li>
+                <li>Iterated on prompts to improve effectiveness, efficiency, and accuracy.</li>
+                <li>Evaluated prompt performance and refined prompts based on results.</li>
+              </ul>
+            </div>
+
+            <div class="timeline-item" style="flex:1">
+              <strong>Java Full Stack — Datavalley (Intern)</strong>
+              <div class="muted">Jan 2024 — Apr 2024</div>
+              <ul style="margin-top:8px;color:var(--muted)">
+                <li>Built backend services using Java Spring Boot for data processing and retrieval.</li>
+                <li>Integrated RESTful APIs with front-end components and collaborated with the UI team.</li>
+                <li>Worked in agile sprints and contributed to DB design and performance improvements.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- PROJECTS -->
+        <section id="projects" style="margin-top:20px">
+          <h3><i class='bx bx-code-alt'></i> Projects</h3>
+
+          <div class="project">
+            <strong>Secure Search Scheme — Web Developer</strong>
+            <div class="muted">Jan 2024</div>
+            <p class="muted" style="margin-top:8px">
+              Worked on achieving secure, universal, and fine-grained query result verification for a secure search scheme over encrypted cloud data.
+              Implemented front-end interfaces (HTML/CSS/JS) and contributed to secure search features, fine-grained verification, and cross-platform compatibility.
+            </p>
+          </div>
+
+          <div class="project">
+            <strong>Hangman Game & Dancing Robot</strong>
+            <div class="muted">Personal Projects</div>
+            <p class="muted" style="margin-top:8px">
+              Interactive projects demonstrating JavaScript and CSS animation skills: a Hangman game with game logic and a playful dancing robot built with HTML/CSS.
+            </p>
+          </div>
+
+          <div class="project">
+            <strong>Beach Resort Website</strong>
+            <div class="muted">Personal Project</div>
+            <p class="muted" style="margin-top:8px">
+              A responsive resort website prototype with room booking UI, food menus, and activities management.
+            </p>
+          </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section id="skills" style="margin-top:20px">
+          <h3><i class='bx bx-star'></i> Skills</h3>
+          <div class="skills" style="margin-top:10px">
+            <!-- grouped -->
+            <span class="skill">Core Java</span>
+            <span class="skill">Java Spring / Spring Boot</span>
+            <span class="skill">RESTful APIs</span>
+            <span class="skill">JavaScript</span>
+            <span class="skill">React</span>
+            <span class="skill">Node.js</span>
+            <span class="skill">Python</span>
+            <span class="skill">MongoDB</span>
+            <span class="skill">SQL</span>
+            <span class="skill">HTML5 & CSS3</span>
+            <span class="skill">Responsive Design</span>
+            <span class="skill">Git / GitHub</span>
+            <span class="skill">Agile</span>
+          </div>
+        </section>
+
+        <!-- ACHIEVEMENTS -->
+        <section id="achievements" style="margin-top:20px">
+          <h3><i class='bx bx-trophy'></i> Achievements</h3>
+
+          <div class="stats" style="margin-top:10px">
+            <div class="stat">
+              <h4>50%</h4>
+              <div class="muted">Improved application speed</div>
+            </div>
+
+            <div class="stat">
+              <h4>90%</h4>
+              <div class="muted">Prompt effectiveness (10 prompts)</div>
+            </div>
+
+            <div class="stat">
+              <h4>3 Projects</h4>
+              <div class="muted">Led and completed within 4 months</div>
+            </div>
+
+            <div class="stat">
+              <h4>99.9%</h4>
+              <div class="muted">Improved system uptime</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- EDUCATION -->
+        <section id="education" style="margin-top:20px">
+          <h3><i class='bx bx-book'></i> Education</h3>
+
+          <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px">
+            <div class="timeline-item" style="flex:1">
+              <strong>B.Tech, Computer Science</strong>
+              <div class="muted">Swarnandhra Institute of Engineering and Technology — Sep 2020 — Apr 2024</div>
+            </div>
+
+            <div class="timeline-item" style="flex:1">
+              <strong>12th — MPC</strong>
+              <div class="muted">Sasi Junior College — Jun 2018 — Mar 2020</div>
+            </div>
+
+            <div class="timeline-item" style="flex:1">
+              <strong>10th</strong>
+              <div class="muted">Sasi English Medium High School — Jun 2017 — Mar 2018</div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- RIGHT: sidebar -->
+      <aside class="card sidebar" aria-label="Sidebar">
+        <div class="profile" style="gap:12px">
+          <div style="flex:1">
+            <div style="display:flex;gap:12px;align-items:center">
+              <div class="avatar" style="width:72px;height:72px;border-radius:10px;overflow:hidden">
+                <img src="sk.jpg" alt="Sanjay Kumar" style="width:100%;height:100%;object-fit:cover">
+              </div>
+              <div>
+                <div style="font-weight:700">Sanjay Kumar Tirumala</div>
+                <div class="muted" style="font-size:13px">Software Developer</div>
+              </div>
+            </div>
+
+            <div class="contact-list" style="margin-top:12px">
+              <div class="contact-item"><i class='bx bxs-phone'></i> <span class="muted">+91 86881 14046</span></div>
+              <div class="contact-item"><i class='bx bxs-envelope'></i> <a href="mailto:sanjaykumar231tirumala@gmail.com" class="muted" style="text-decoration:none">sanjaykumar231tirumala@gmail.com</a></div>
+              <div class="contact-item"><i class='bx bxl-linkedin-square'></i> <a href="https://www.linkedin.com/in/sanjaykumartirumala" target="_blank" rel="noopener" class="muted" style="text-decoration:none">linkedin.com/in/sanjaykumartirumala</a></div>
+              <div class="contact-item"><i class='bx bxs-map'></i> <span class="muted">Yernagudem, Andhra Pradesh</span></div>
+            </div>
+          </div>
+        </div>
+
+        <hr style="border:none;border-top:1px solid rgba(255,255,255,0.02);margin:14px 0">
+
+        <section>
+          <h3><i class='bx bx-award'></i> Key Skills</h3>
+          <div class="skills" style="margin-top:8px">
+            <span class="skill">Spring Boot</span>
+            <span class="skill">REST APIs</span>
+            <span class="skill">Prompt Engineering</span>
+            <span class="skill">Java</span>
+            <span class="skill">Python</span>
+            <span class="skill">MongoDB</span>
+          </div>
+        </section>
+
+        <hr style="border:none;border-top:1px solid rgba(255,255,255,0.02);margin:14px 0">
+
+        <section>
+          <h3><i class='bx bx-pen'></i> Languages</h3>
+          <div style="margin-top:8px">
+            <div class="muted">English — Proficient</div>
+            <div class="muted">Hindi — Intermediate</div>
+          </div>
+        </section>
+      </aside>
+    </main>
+
+    <footer class="footer">
+      <div>© <span id="year"></span> Sanjay Kumar Tirumala • Built with ❤️ • <span class="muted">Available for Software Developer roles</span></div>
+    </footer>
+  </div>
+
+  <!-- Minimal JS: menu toggle + typed roles + year -->
+  <script>
+    // Update footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Menu toggle for small screens
+    const menuToggle = document.getElementById('menuToggle');
+    menuToggle && menuToggle.addEventListener('click', () => {
+      const nav = document.querySelector('.navbar');
+      if(nav) nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+    });
+
+    // Typed roles (rotating text)
+    document.addEventListener('DOMContentLoaded', function(){
+      if(typeof Typed !== 'undefined'){
+        new Typed('#typedRoles', {
+          strings: [
+            "Software Developer",
+            "Backend Engineer",
+            "Prompt Engineer",
+            "Java • Spring Boot"
+          ],
+          typeSpeed: 45,
+          backSpeed: 25,
+          backDelay: 1800,
+          loop: true,
+          showCursor: true,
+          cursorChar: '|'
+        });
+      } else {
+        // Fallback: simple rotation
+        const el = document.getElementById('typedRoles');
+        const arr = ["Software Developer","Backend Engineer","Prompt Engineer","Java • Spring Boot"];
+        let i=0;
+        setInterval(()=>{ el.textContent = arr[i%arr.length]; i++; }, 2200);
+      }
+    });
+  </script>
+</body>
+</html>
